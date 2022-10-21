@@ -1,7 +1,7 @@
+import React from 'react';
+
 function App() {
-  return (
-    <p>Hello</p>
-  );
+  return <p>Hello you</p>;
 }
 
 export default App;
