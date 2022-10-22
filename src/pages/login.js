@@ -22,7 +22,7 @@ export default function Login() {
   }, []);
 
   return (
-    <div>
+    <div className="container flex ms-auto max-w-screen items-center h-screen">
       <p>Login Page</p>
     </div>
   );
