@@ -23,7 +23,16 @@ export default function Login() {
 
   return (
     <div className="container flex ms-auto max-w-screen items-center h-screen">
-      <p>Login Page</p>
+      <div className="flex w-3/5">
+        <img
+          src="/images/iphone-with-profile.jpg"
+          alt="iPhone with Instagram app"
+          className="max-w-full"
+        />
+      </div>
+      <div className="flex flex-col w-2/5">
+        <p>i will be the form</p>
+      </div>
     </div>
   );
 }
