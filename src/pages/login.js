@@ -20,7 +20,7 @@ export default function Login() {
     event.preventDefault();
     try {
       await firebase.auth().signInWithEmailAndPassword(emailAddress, password);
-      navigate.push(ROUTES.DASHBOARD);
+      navigate(ROUTES.DASHBOARD);
     } catch (error) {
       setEmailAddress('');
       setPassword('');

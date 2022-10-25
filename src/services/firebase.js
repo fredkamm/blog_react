@@ -4,9 +4,9 @@ export async function doesUsernameExist(username) {
   const results = await firebase
     .firestore()
     .collection('users')
-    .where('username', '==', username)
+    .where('username', '==', username.toLowerCase())
     .get();
 
-  console.log(results);
-  return results.docs.map((user) => user.data().length > 0);
+  console.log('results', results);
+  return results.docs.length > 0;
 }
