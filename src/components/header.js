@@ -25,7 +25,7 @@ export default function Header() {
             {user ? (
               <>
                 <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
-                  {/* Icons from heroicons */}
+                  {/* Home icon taken from heroicon */}
                   <svg
                     className="w-8 mr-6 text-black-light cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@ export default function Header() {
                     />
                   </svg>
                 </Link>
-
+                {/* Sign out icon taken from heroicon */}
                 <button
                   type="button"
                   title="Sign Out"
@@ -49,6 +49,7 @@ export default function Header() {
                     firebase.auth().signOut();
                     Navigate(ROUTES.LOGIN);
                   }}
+                  // Same as on 'Click'
                   onKeyDown={(event) => {
                     if (event.key === 'Enter') {
                       firebase.auth().signOut();
@@ -73,6 +74,7 @@ export default function Header() {
                 </button>
 
                 {user && (
+                  // Displays the user icon picture
                   <div className="flex items-center cursor-pointer">
                     <Link to={`/p/${user?.username}`}>
                       <img
@@ -88,6 +90,7 @@ export default function Header() {
                 )}
               </>
             ) : (
+              // If user is not signed in, these will replace the other icons on the header
               <>
                 <Link to={ROUTES.LOGIN}>
                   <button
@@ -114,6 +117,6 @@ export default function Header() {
   );
 }
 
-// We want the header to retrieve the user information
+// We want the header to retrieve the user information (Profile access)
 // Links
 // Ability to sign out or sign in if the user is not so already
