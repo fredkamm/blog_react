@@ -21,6 +21,7 @@ export default function Header() {
             </h1>
           </div>
           <div className="text-gray-700 text-center flex items-center align-items">
+            {/* if there is a user */}
             {user ? (
               <>
                 <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
@@ -75,11 +76,11 @@ export default function Header() {
                 {user && (
                   // Displays the user icon picture
                   <div className="flex items-center cursor-pointer">
-                    <Link to={`/p/${user?.username}`}>
+                    <Link to={`/p/${user.displayName}`}>
                       <img
                         className="rounded-full h-8 w-8 flex"
-                        src={`/images/avatars/${user?.username}.jpg`}
-                        alt={`${user?.username} profile`}
+                        src={`/images/avatars/${user.displayName}.jpg`}
+                        alt=""
                         onError={(e) => {
                           e.target.src = DEFAULT_IMAGE_PATH;
                         }}
