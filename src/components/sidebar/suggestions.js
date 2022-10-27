@@ -8,6 +8,7 @@ import SuggestedProfile from './suggested-profiles';
 export default function Suggestions({ userId, following, loggedInUserDocId }) {
   const [profiles, setProfiles] = useState(null);
 
+  // run this use effect every time a user changes
   useEffect(() => {
     async function suggestedProfiles() {
       const response = await getSuggestedProfiles(userId, following);
@@ -19,7 +20,7 @@ export default function Suggestions({ userId, following, loggedInUserDocId }) {
     }
   }, [userId]);
 
-  console.log('following', following);
+  console.log('profiles', profiles);
 
   return !profiles ? (
     <Skeleton count={1} height={150} className="mt-5" />

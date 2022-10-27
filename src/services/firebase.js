@@ -1,5 +1,6 @@
 import { firebase, FieldValue } from '../lib/firebase';
 
+// seeing if there is a username already in the system
 export async function doesUsernameExist(username) {
   const results = await firebase
     .firestore()
@@ -44,18 +45,36 @@ export async function getSuggestedProfiles(userId, following) {
   return profiles;
 }
 
-// export async function updateLoggedInUserFollowing(
-//   loggedInUserDocId, // currently logged in user document id
-//   profileId, // the user that we requests to follow
-//   isFollowingProfile // true/false (am i currently following this person?)
-// ) {
-//   return firebase
-//     .firestore()
-//     .collection('users')
-//     .doc(loggedInUserDocId)
-//     .update({
-//       following: isFollowingProfile
-//         ? FieldValue.arrayRemove(profileId)
-//         : FieldValue.arrayUnion(profileId)
-//     });
-// }
+// update following list when logged in user follows someone
+export async function updateLoggedInUserFollowing(
+  loggedInUserDocId, // currently logged in user document id
+  profileId, // the user that we requests to follow
+  isFollowingProfile // true/false (am i currently following this person?)
+) {
+  return firebase
+    .firestore()
+    .collection('users')
+    .doc(loggedInUserDocId)
+    .update({
+      following: isFollowingProfile
+        ? FieldValue.arrayRemove(profileId)
+        : FieldValue.arrayUnion(profileId)
+    });
+}
+
+// update the followed users follow by list
+export async function updateFollowedUserFollowers(
+  profileDocId, // currently logged in user document id
+  loggedInUserDocId, // the user that requests to follow
+  isFollowingProfile // true/false (am i currently following this person?)
+) {
+  return firebase
+    .firestore()
+    .collection('users')
+    .doc(profileDocId)
+    .update({
+      followers: isFollowingProfile
+        ? FieldValue.arrayRemove(loggedInUserDocId)
+        : FieldValue.arrayUnion(loggedInUserDocId)
+    });
+}

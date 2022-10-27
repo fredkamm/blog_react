@@ -2,10 +2,11 @@
 import useUser from '../../hooks/use-user';
 import User from './user';
 import Suggestions from './suggestions';
+import LoggedInUserContext from '../../context/logged-in-user';
 
 export default function SideBar() {
   const {
-    user: { fullName, username, userId, following }
+    user: { docId = '', fullName, username, userId, following }
   } = useUser();
 
   console.log(fullName, username, userId, following);
@@ -13,7 +14,7 @@ export default function SideBar() {
   return (
     <div className="p-4">
       <User username={username} fullName={fullName} />
-      <Suggestions userId={userId} />
+      <Suggestions userId={userId} following={following} loggedInUserDocId={docId} />
     </div>
   );
 }
