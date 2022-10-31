@@ -54,6 +54,7 @@ export default function Actions({ docId, totalLikes, likedPhoto, handleFocus }) 
             />
           </svg>
           <svg
+            // if user clicks on the comments icon. it brings the user to the text area to add comment
             onClick={handleFocus}
             onKeyDown={(event) => {
               if (event.key === 'Enter') {

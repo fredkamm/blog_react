@@ -1,4 +1,6 @@
 /* eslint-disable object-curly-newline */
+/* eslint-disable no-confusing-arrow */
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable prettier/prettier */
 import { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
@@ -9,6 +11,7 @@ export default function AddComment({ docId, comments, setComments, commentInput 
   const [comment, setComment] = useState('');
   const { firebase, FieldValue } = useContext(FirebaseContext);
   const {
+    // who is logged in
     user: { displayName }
   } = useContext(UserContext);
 
@@ -32,7 +35,10 @@ export default function AddComment({ docId, comments, setComments, commentInput 
       <form
         className="flex justify-between pl-0 pr-5"
         method="POST"
-        onSubmit={(event) => (comment.length >= 1 ? handleSubmitComment(event) : event.preventDefault())}
+        onSubmit={(event) =>
+          comment.length >= 1
+            ? handleSubmitComment(event)
+            : event.preventDefault()}
       >
         <input
           aria-label="Add a comment"
@@ -46,7 +52,9 @@ export default function AddComment({ docId, comments, setComments, commentInput 
           ref={commentInput}
         />
         <button
-          className={`text-sm font-bold text-blue-medium ${!comment && 'opacity-25'}`}
+          className={`text-sm font-bold text-blue-medium ${
+            !comment && 'opacity-25'
+          }`}
           type="button"
           disabled={comment.length < 1}
           onClick={handleSubmitComment}

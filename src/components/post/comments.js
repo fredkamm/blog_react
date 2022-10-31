@@ -1,6 +1,7 @@
 /* eslint-disable object-curly-newline */
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+// this is how we ge the time of how long ago it was posted (ex: 10 days ago)
 import { formatDistance } from 'date-fns';
 import { Link } from 'react-router-dom';
 import AddComment from './add-comments';
@@ -59,3 +60,6 @@ Comments.propTypes = {
   posted: PropTypes.number.isRequired,
   commentInput: PropTypes.object.isRequired
 };
+
+// first we need to show the comments
+// then we need to be able to add a comment to the post
